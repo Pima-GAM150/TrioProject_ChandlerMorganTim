@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-
     //Boosts the player's Speed and resets Agility and Strength.
     private float PlayerSpeedMode()
     {
@@ -53,9 +52,11 @@ public class PlayerController : MonoBehaviour {
 void Start () {
         PlayerClean();
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
+        float joystickMovement = Input.GetAxis("Joystick Horizontal");
+        float dPadMovement = Input.GetAxis("D-Pad Horizontal");
 
         PlayerStats.verticalVelocity = gameObject.GetComponent<Rigidbody2D>().velocity.y;
 
@@ -66,32 +67,32 @@ void Start () {
         }
 
         //Causes the player to jump when Spacebar is pressed and prevents multi-jumping using the jumpCount variable.
-        if (Input.GetKeyDown(KeyCode.Space) && PlayerStats.jumpCount < 1)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Jump")) && PlayerStats.jumpCount < 1)
         {
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, PlayerStats.playerAgility), ForceMode2D.Impulse);
             PlayerStats.jumpCount += 1;
         }
 
         //Switches the character to their Speed form when the "1" key is pressed.
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetButtonDown("X"))
         {
             PlayerSpeedMode();
         }
 
         //Switches the character to their Srength form when the "2" key is pressed.
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetButtonDown("Y"))
         {
             PlayerStrengthMode();
         }
 
         //Switches the character to their Agility form when the "3" key is pressed.
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetButtonDown("B"))
         {
             PlayerAgilityMode();
         }
 
         //Resets the character's stats when the "4" key is pressed.
-        if (Input.GetKeyDown(KeyCode.Alpha4))
+        if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetButtonDown("RB"))
         {
             PlayerClean();
         }
@@ -101,11 +102,31 @@ void Start () {
         {
             gameObject.transform.Translate(new Vector2(PlayerStats.playerSpeed, 0) * 6 * Time.deltaTime);
         }
-        
+
         //Move left when the left arrow key is pressed.
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             gameObject.transform.Translate(new Vector2((PlayerStats.playerSpeed * -1), 0) * 6 * Time.deltaTime);
+        }
+
+        if (joystickMovement < 0)
+        {
+            gameObject.transform.Translate(new Vector2((PlayerStats.playerSpeed * -1), 0) * 6 * Time.deltaTime);
+        }
+
+        if (joystickMovement > 0)
+        {
+            gameObject.transform.Translate(new Vector2((PlayerStats.playerSpeed * 1), 0) * 6 * Time.deltaTime);
+        }
+
+        if (dPadMovement < 0)
+        {
+            gameObject.transform.Translate(new Vector2((PlayerStats.playerSpeed * -1), 0) * 6 * Time.deltaTime);
+        }
+
+        if (dPadMovement > 0)
+        {
+            gameObject.transform.Translate(new Vector2((PlayerStats.playerSpeed * 1), 0) * 6 * Time.deltaTime);
         }
     }
 }
