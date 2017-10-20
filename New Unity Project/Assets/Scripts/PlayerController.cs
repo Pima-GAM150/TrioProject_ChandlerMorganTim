@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+    public int playerModeSelect = 0;
+
     //Boosts the player's Speed and resets Agility and Strength.
     private float PlayerSpeedMode()
     {
@@ -55,6 +57,7 @@ void Start () {
 
     // Update is called once per frame
     void Update() {
+
         float joystickMovement = Input.GetAxis("Joystick Horizontal");
         float dPadMovement = Input.GetAxis("D-Pad Horizontal");
 
@@ -73,28 +76,50 @@ void Start () {
             PlayerStats.jumpCount += 1;
         }
 
-        //Switches the character to their Speed form when the "1" key is pressed.
-        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetButtonDown("X"))
+        //Keeps the playerModeSelect variable from going out of bounds.
+        if (playerModeSelect > 3)
+        {
+            playerModeSelect = 0;
+        }
+        if (playerModeSelect < 0)
+        {
+            playerModeSelect = 3;
+        }
+
+        //Swaps player to clean mode
+        if (playerModeSelect == 0)
+        {
+            PlayerClean();
+        }
+
+        //Swaps player to speed mode
+        if (playerModeSelect == 1)
         {
             PlayerSpeedMode();
         }
 
-        //Switches the character to their Srength form when the "2" key is pressed.
-        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetButtonDown("Y"))
+        //Swaps player to strength mode
+        if (playerModeSelect == 2)
         {
             PlayerStrengthMode();
         }
 
-        //Switches the character to their Agility form when the "3" key is pressed.
-        if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetButtonDown("B"))
+        //Swaps player to agility mode
+        if (playerModeSelect == 3)
         {
             PlayerAgilityMode();
         }
 
-        //Resets the character's stats when the "4" key is pressed.
-        if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetButtonDown("RB"))
+        //Switches the character's mode to the next mode in the sequence (Clean -> Speed -> Strength -> Agility)
+        if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetButtonDown("RB"))
         {
-            PlayerClean();
+            playerModeSelect += 1;
+        }
+
+        //Switches the character's mode to the previous mode in the sequence (Agility -> Strength -> Speed -> Clean)
+        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetButtonDown("LB"))
+        {
+            playerModeSelect -= 1;
         }
 
         //Move right when the right arrow key is pressed.
