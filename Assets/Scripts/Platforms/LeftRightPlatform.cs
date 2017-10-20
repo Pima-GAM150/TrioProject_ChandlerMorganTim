@@ -4,20 +4,30 @@ using UnityEngine;
 
 public class LeftRightPlatform : MonoBehaviour
 {
+    private float useSpeed;
+    public float directionSpeed = 9.0f;
+    float origX;
+    public float distance = 10.0f;
 
-    private Vector2 startPosition;
-    private int speed;
-
+    // Use this for initialization
     void Start()
     {
-        startPosition = transform.position;
-        speed = 3;
+        origX = transform.position.x;
+        useSpeed = -directionSpeed;
     }
 
+    // Update is called once per frame
     void Update()
     {
-        transform.position =
-            new Vector2(startPosition.x + Mathf.Sin(Time.time * speed), transform.position.y);
+        if (origX - transform.position.x > distance)
+        {
+            useSpeed = directionSpeed; //flip direction
+        }
+        else if (origX - transform.position.x < -distance)
+        {
+            useSpeed = -directionSpeed; //flip direction
+        }
+        transform.Translate(useSpeed * Time.deltaTime, 0, 0);
     }
 }
     
