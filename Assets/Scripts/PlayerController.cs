@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    public int playerModeSelect = 0;
+    public static int playerModeSelect = 0;
 
     //Boosts the player's Speed and resets Agility and Strength.
     private float PlayerSpeedMode()
