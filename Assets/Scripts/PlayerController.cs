@@ -154,4 +154,12 @@ void Start () {
             gameObject.transform.Translate(new Vector2((PlayerStats.playerSpeed * 1), 0) * 6 * Time.deltaTime);
         }
     }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "platform")
+        {
+            gameObject.transform.SetParent(collision.gameObject.transform);
+        }
+    }
 }
