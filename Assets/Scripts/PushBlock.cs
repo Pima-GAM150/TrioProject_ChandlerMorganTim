@@ -7,6 +7,7 @@ public class PushBlock : MonoBehaviour
 
     public bool pushForce;
     public Rigidbody2D PushableBlock = new Rigidbody2D();
+    float verticalVelocity;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -31,13 +32,20 @@ public class PushBlock : MonoBehaviour
     void Update()
     {
 
+        verticalVelocity = PushableBlock.velocity.y;
+
         if (pushForce = true && PlayerStats.playerStrength == 2)
         {
             PushableBlock.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
-        else
+        else if(verticalVelocity == 0)
         {
             PushableBlock.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+        else
+        {
+            PushableBlock.constraints = RigidbodyConstraints2D.FreezePositionX;
+            PushableBlock.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
 
     }
