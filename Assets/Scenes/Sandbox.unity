@@ -1125,19 +1125,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1395612337286684, guid: 12562667fa4a50f4b86fa3ac5d9f4e7a,
     type: 2}
   m_PrefabInternal: {fileID: 1121591544}
---- !u!114 &1296897235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1296897234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e8eab6bfde07e1438e359a22696261b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  directionSpeed: 9
-  distance: 4
 --- !u!61 &1296897236
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1243,6 +1230,19 @@ MonoBehaviour:
   green: {fileID: 21300000, guid: e659394f14c715649ade70c696d84332, type: 3}
   white: {fileID: 21300000, guid: 6afd9c603664e6d4284583557e5f9b92, type: 3}
   platform: {fileID: 1296897238}
+--- !u!114 &1296897242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1296897234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a9baeaea16d384fa433c7fec056478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  directionSpeed: 9
+  distance: 4
 --- !u!1 &1472229860 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1996224475224950, guid: 5d7f708dbc16c674a9c5b3e9d71b7691,
@@ -1529,7 +1529,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 9.372542
+  orthographic size: 17.189034
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
