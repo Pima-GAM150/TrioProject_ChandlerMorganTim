@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
     public static int playerModeSelect = 0;
     public static float speedMovement;
@@ -51,13 +52,15 @@ public class PlayerController : MonoBehaviour {
         return PlayerStats.playerSpeed;
     }
 
-// Use this for initialization
-void Start () {
+    // Use this for initialization
+    void Start()
+    {
         PlayerClean();
-	}
+    }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
 
         float joystickMovement = Input.GetAxis("Joystick Horizontal");
         float dPadMovement = Input.GetAxis("D-Pad Horizontal");
@@ -184,5 +187,13 @@ void Start () {
         {
             PlayerStats.jumpCount = 0;
         }
+        if (collision.gameObject.tag == "Restart")
+        {
+            Debug.Log("touching");
+            // Application.LoadLevel(0);
+            //SceneManager.LoadScene(0);
+        }
     }
 }
+
+   
