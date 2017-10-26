@@ -112,6 +112,57 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &38410808
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4824606485592502, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -16.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824606485592502, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 5.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824606485592502, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824606485592502, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824606485592502, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824606485592502, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824606485592502, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824606485592502, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 50024429437704614, guid: 9b26815f572f5984cb6d8d7b63a016f9,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907071943180358, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+      propertyPath: m_Name
+      value: JumpWall (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &45545864 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1395612337286684, guid: 12562667fa4a50f4b86fa3ac5d9f4e7a,
@@ -222,6 +273,53 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.103937, y: 0.5509578}
   m_EdgeRadius: 0
+--- !u!1001 &111752410
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4824606485592502, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 130.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824606485592502, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 10.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824606485592502, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824606485592502, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824606485592502, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824606485592502, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824606485592502, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824606485592502, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 50024429437704614, guid: 9b26815f572f5984cb6d8d7b63a016f9,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 7
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &150347709
 Prefab:
   m_ObjectHideFlags: 0
@@ -1407,6 +1505,57 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!1001 &1659896113
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4824606485592502, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -11.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824606485592502, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 10.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824606485592502, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824606485592502, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824606485592502, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824606485592502, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824606485592502, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824606485592502, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 50024429437704614, guid: 9b26815f572f5984cb6d8d7b63a016f9,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907071943180358, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+      propertyPath: m_Name
+      value: JumpWall (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 9b26815f572f5984cb6d8d7b63a016f9, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1811946148
 Prefab:
   m_ObjectHideFlags: 0
@@ -1529,7 +1678,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 17.189034
+  orthographic size: 9.2042675
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

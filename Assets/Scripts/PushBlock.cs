@@ -19,6 +19,7 @@ public class PushBlock : MonoBehaviour
         else
         {
             pushForce = false;
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
     }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     public static int playerModeSelect = 0;
+    public static float speedMovement;
 
     //Boosts the player's Speed and resets Agility and Strength.
     private float PlayerSpeedMode()
@@ -126,32 +127,38 @@ void Start () {
         if (Input.GetKey(KeyCode.RightArrow))
         {
             gameObject.transform.Translate(new Vector2(PlayerStats.playerSpeed, 0) * 6 * Time.deltaTime);
+            speedMovement = PlayerStats.playerSpeed * 6 * Time.deltaTime;
         }
 
         //Move left when the left arrow key is pressed.
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             gameObject.transform.Translate(new Vector2((PlayerStats.playerSpeed * -1), 0) * 6 * Time.deltaTime);
+            speedMovement = (PlayerStats.playerSpeed * -1) * 6 * Time.deltaTime;
         }
 
         if (joystickMovement < 0)
         {
             gameObject.transform.Translate(new Vector2((PlayerStats.playerSpeed * -1), 0) * 6 * Time.deltaTime);
+            speedMovement = PlayerStats.playerSpeed * 6 * Time.deltaTime;
         }
 
         if (joystickMovement > 0)
         {
             gameObject.transform.Translate(new Vector2((PlayerStats.playerSpeed * 1), 0) * 6 * Time.deltaTime);
+            speedMovement = (PlayerStats.playerSpeed * -1) * 6 * Time.deltaTime;
         }
 
         if (dPadMovement < 0)
         {
             gameObject.transform.Translate(new Vector2((PlayerStats.playerSpeed * -1), 0) * 6 * Time.deltaTime);
+            speedMovement = PlayerStats.playerSpeed * 6 * Time.deltaTime;
         }
 
         if (dPadMovement > 0)
         {
             gameObject.transform.Translate(new Vector2((PlayerStats.playerSpeed * 1), 0) * 6 * Time.deltaTime);
+            speedMovement = (PlayerStats.playerSpeed * -1) * 6 * Time.deltaTime;
         }
     }
 
@@ -160,6 +167,22 @@ void Start () {
         if (collision.gameObject.tag == "platform")
         {
             gameObject.transform.SetParent(collision.gameObject.transform);
+        }
+        if (collision.gameObject.tag == "jump wall" && playerModeSelect == 3)
+        {
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(speedMovement, -2.5f);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "platform")
+        {
+            gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        }
+
+        if (collision.gameObject.tag == "jump wall" && playerModeSelect == 3)
+        {
+            PlayerStats.jumpCount = 0;
         }
     }
 }
