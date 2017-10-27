@@ -6,6 +6,7 @@ TagManager:
   tags:
   - platform
   - jump wall
+  - Restart
   layers:
   - Default
   - TransparentFX

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
 
@@ -180,6 +180,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "platform")
         {
+            Debug.Log("touching");
             gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
 
@@ -190,8 +191,8 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Restart")
         {
             Debug.Log("touching");
-            // Application.LoadLevel(0);
-            //SceneManager.LoadScene(0);
+            
+            SceneManager.LoadScene(0);
         }
     }
 }
