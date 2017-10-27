@@ -180,7 +180,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "platform")
         {
-            Debug.Log("touching");
+            //Debug.Log("touching");
             gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
 
@@ -190,8 +190,6 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.tag == "Restart")
         {
-            Debug.Log("touching");
-            
             SceneManager.LoadScene(0);
         }
     }
