@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
         return PlayerStats.playerStrength;
         return PlayerStats.playerAgility;
         return PlayerStats.playerSpeed;
+        animator.SetBool("playerGreen", false);
+        animator.SetBool("playerBlue", true);
     }
 
     //Boosts the player's Strength and resets Agility and Strength.
@@ -30,6 +32,7 @@ public class PlayerController : MonoBehaviour
         return PlayerStats.playerStrength;
         return PlayerStats.playerAgility;
         return PlayerStats.playerSpeed;
+        animator.SetInteger("playerModeSwap", 2);
     }
 
     //Boosts the player's Agility and resets Speed and Strength.
@@ -80,6 +83,7 @@ public class PlayerController : MonoBehaviour
         {
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, PlayerStats.playerAgility), ForceMode2D.Impulse);
             PlayerStats.jumpCount += 1;
+            animator.SetBool("isRunning", false);
         }
 
         //Keeps the playerModeSelect variable from going out of bounds.
@@ -102,18 +106,27 @@ public class PlayerController : MonoBehaviour
         if (playerModeSelect == 1)
         {
             PlayerSpeedMode();
+            animator.SetBool("playerBlue", true);
+            animator.SetBool("playerGreen", false);
+            animator.SetBool("playerRed", false);
         }
 
         //Swaps player to strength mode
         if (playerModeSelect == 2)
         {
             PlayerStrengthMode();
+            animator.SetBool("playerRed", true);
+            animator.SetBool("playerBlue", false);
+            animator.SetBool("playerGreen", false);
         }
 
         //Swaps player to agility mode
         if (playerModeSelect == 3)
         {
             PlayerAgilityMode();
+            animator.SetBool("playerGreen", true);
+            animator.SetBool("playerBlue", false);
+            animator.SetBool("playerRed", false);
         }
 
         //Switches the character's mode to the next mode in the sequence (Clean -> Speed -> Strength -> Agility)
@@ -181,10 +194,12 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "platform")
         {
             gameObject.transform.SetParent(collision.gameObject.transform);
+            animator.SetBool("isSliding", false);
         }
         if (collision.gameObject.tag == "jump wall" && playerModeSelect == 3)
         {
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(speedMovement, -2.5f);
+            animator.SetBool("isSliding", true);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
