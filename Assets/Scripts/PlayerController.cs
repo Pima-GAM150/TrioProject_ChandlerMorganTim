@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 
     public static int playerModeSelect = 0;
     public static float speedMovement;
+    public Animator animator;
+    public SpriteRenderer spriteRenderer;
 
     //Boosts the player's Speed and resets Agility and Strength.
     private float PlayerSpeedMode()
@@ -131,13 +133,22 @@ public class PlayerController : MonoBehaviour
         {
             gameObject.transform.Translate(new Vector2(PlayerStats.playerSpeed, 0) * 6 * Time.deltaTime);
             speedMovement = PlayerStats.playerSpeed * 6 * Time.deltaTime;
+            animator.SetBool("isRunning", true);
+            spriteRenderer.flipX = false;
         }
 
         //Move left when the left arrow key is pressed.
-        if (Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow))
         {
             gameObject.transform.Translate(new Vector2((PlayerStats.playerSpeed * -1), 0) * 6 * Time.deltaTime);
             speedMovement = (PlayerStats.playerSpeed * -1) * 6 * Time.deltaTime;
+            animator.SetBool("isRunning", true);
+            spriteRenderer.flipX = true;
+        }
+
+        else
+        {
+            animator.SetBool("isRunning", false);
         }
 
         if (joystickMovement < 0)
