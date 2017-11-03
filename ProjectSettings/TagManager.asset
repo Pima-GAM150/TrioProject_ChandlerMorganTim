@@ -8,6 +8,7 @@ TagManager:
   - jump wall
   - Restart
   - backgroundPlat
+  - Run
   layers:
   - Default
   - TransparentFX

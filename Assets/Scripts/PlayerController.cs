@@ -254,6 +254,10 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
+        if (collision.gameObject.tag == "Run")
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }
 
