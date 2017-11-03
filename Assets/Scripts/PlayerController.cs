@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public static float speedMovement;
     public Animator animator;
     public SpriteRenderer spriteRenderer;
+    public bool hasChangedForms;
 
     //Boosts the player's Speed and resets Agility and Strength.
     private float PlayerSpeedMode()
@@ -61,12 +62,12 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         PlayerClean();
+        hasChangedForms = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-
         float joystickMovement = Input.GetAxis("Joystick Horizontal");
         float dPadMovement = Input.GetAxis("D-Pad Horizontal");
 
@@ -87,19 +88,29 @@ public class PlayerController : MonoBehaviour
         }
 
         //Keeps the playerModeSelect variable from going out of bounds.
-        if (playerModeSelect > 3)
+        if (playerModeSelect > 3 && hasChangedForms == false)
         {
             playerModeSelect = 0;
         }
-        if (playerModeSelect < 0)
+        if (playerModeSelect < 0 && hasChangedForms == false)
         {
             playerModeSelect = 3;
         }
+        if (playerModeSelect > 3 && hasChangedForms == true)
+        {
+            playerModeSelect = 1;
+        }
+        if (playerModeSelect < 1 && hasChangedForms == true)
+        {
+            playerModeSelect = 3;
+        }
+
 
         //Swaps player to clean mode
         if (playerModeSelect == 0)
         {
             PlayerClean();
+            hasChangedForms = false;
         }
 
         //Swaps player to speed mode
@@ -109,6 +120,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("playerBlue", true);
             animator.SetBool("playerGreen", false);
             animator.SetBool("playerRed", false);
+            hasChangedForms = true;
         }
 
         //Swaps player to strength mode
@@ -118,6 +130,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("playerRed", true);
             animator.SetBool("playerBlue", false);
             animator.SetBool("playerGreen", false);
+            hasChangedForms = true;
         }
 
         //Swaps player to agility mode
@@ -127,6 +140,13 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("playerGreen", true);
             animator.SetBool("playerBlue", false);
             animator.SetBool("playerRed", false);
+            hasChangedForms = true;
+        }
+
+        if (Input.GetKey(KeyCode.Tab) || Input.GetButton("Select"))
+        {
+            PlayerClean();
+            hasChangedForms = false;
         }
 
         //Switches the character's mode to the next mode in the sequence (Clean -> Speed -> Strength -> Agility)
