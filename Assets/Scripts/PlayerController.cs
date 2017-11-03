@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     public SpriteRenderer spriteRenderer;
     public bool hasChangedForms;
+    public float movementSpeed;
 
     //Stats that should show us the values for each stat (or how they may unintentionally change)
     /*public float baseSpeedDebug = PlayerStats.playerBaseSpeed;
@@ -204,24 +205,32 @@ public class PlayerController : MonoBehaviour
         {
             gameObject.transform.Translate(new Vector2((PlayerStats.playerSpeed * -1), 0) * 6 * Time.deltaTime);
             speedMovement = PlayerStats.playerSpeed * 6 * Time.deltaTime;
+            animator.SetBool("isRunning", true);
+            spriteRenderer.flipX = true;
         }
 
         if (joystickMovement > 0)
         {
             gameObject.transform.Translate(new Vector2((PlayerStats.playerSpeed * 1), 0) * 6 * Time.deltaTime);
             speedMovement = (PlayerStats.playerSpeed * -1) * 6 * Time.deltaTime;
+            animator.SetBool("isRunning", true);
+            spriteRenderer.flipX = false;
         }
 
         if (dPadMovement < 0)
         {
             gameObject.transform.Translate(new Vector2((PlayerStats.playerSpeed * -1), 0) * 6 * Time.deltaTime);
             speedMovement = PlayerStats.playerSpeed * 6 * Time.deltaTime;
+            animator.SetBool("isRunning", true);
+            spriteRenderer.flipX = true;
         }
 
         if (dPadMovement > 0)
         {
             gameObject.transform.Translate(new Vector2((PlayerStats.playerSpeed * 1), 0) * 6 * Time.deltaTime);
             speedMovement = (PlayerStats.playerSpeed * -1) * 6 * Time.deltaTime;
+            animator.SetBool("isRunning", true);
+            spriteRenderer.flipX = false;
         }
     }
 
@@ -236,6 +245,14 @@ public class PlayerController : MonoBehaviour
         {
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(speedMovement, -2.5f);
             animator.SetBool("isSliding", true);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "platform")
+        {
+            gameObject.transform.SetParent(null);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
