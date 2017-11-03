@@ -11,6 +11,19 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public bool hasChangedForms;
 
+    //Stats that should show us the values for each stat (or how they may unintentionally change)
+    /*public float baseSpeedDebug = PlayerStats.playerBaseSpeed;
+    public float baseStrengthDebug = PlayerStats.playerBaseStrength;
+    public float baseAgilityDebug = PlayerStats.playerBaseAgility;
+    public float speedDebug = PlayerStats.playerSpeed;
+    public float strengthDebug = PlayerStats.playerStrength;
+    public float agilityDebug = PlayerStats.playerAgility;
+    public float newSpeed;
+    public float newStrength;
+    public float newAgility;*/
+
+
+
     //Boosts the player's Speed and resets Agility and Strength.
     private float PlayerSpeedMode()
     {
@@ -33,7 +46,6 @@ public class PlayerController : MonoBehaviour
         return PlayerStats.playerStrength;
         return PlayerStats.playerAgility;
         return PlayerStats.playerSpeed;
-        animator.SetInteger("playerModeSwap", 2);
     }
 
     //Boosts the player's Agility and resets Speed and Strength.
@@ -45,6 +57,7 @@ public class PlayerController : MonoBehaviour
         return PlayerStats.playerStrength;
         return PlayerStats.playerAgility;
         return PlayerStats.playerSpeed;
+
     }
 
     //Resets all stats on the player to their base value.
@@ -68,6 +81,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //Detects movement inputs from the joystick and d-pad of the controller
         float joystickMovement = Input.GetAxis("Joystick Horizontal");
         float dPadMovement = Input.GetAxis("D-Pad Horizontal");
 
@@ -87,7 +102,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isRunning", false);
         }
 
-        //Keeps the playerModeSelect variable from going out of bounds.
+        //Keeps the playerModeSelect variable from going out of bounds (and from changing the character back to clean).
         if (playerModeSelect > 3 && hasChangedForms == false)
         {
             playerModeSelect = 0;
@@ -112,8 +127,8 @@ public class PlayerController : MonoBehaviour
             PlayerClean();
             hasChangedForms = false;
         }
-
-        //Swaps player to speed mode
+         
+        //Swaps player to speed mode and changes sprite color to blue.
         if (playerModeSelect == 1)
         {
             PlayerSpeedMode();
@@ -123,7 +138,7 @@ public class PlayerController : MonoBehaviour
             hasChangedForms = true;
         }
 
-        //Swaps player to strength mode
+        //Swaps player to strength mode and changes sprite color to red.
         if (playerModeSelect == 2)
         {
             PlayerStrengthMode();
@@ -133,7 +148,7 @@ public class PlayerController : MonoBehaviour
             hasChangedForms = true;
         }
 
-        //Swaps player to agility mode
+        //Swaps player to agility mode and changes sprite color to green.
         if (playerModeSelect == 3)
         {
             PlayerAgilityMode();
@@ -143,6 +158,7 @@ public class PlayerController : MonoBehaviour
             hasChangedForms = true;
         }
 
+        //Gets the tab or select input to enable changing back to the clean form
         if (Input.GetKey(KeyCode.Tab) || Input.GetButton("Select"))
         {
             PlayerClean();
@@ -161,7 +177,7 @@ public class PlayerController : MonoBehaviour
             playerModeSelect -= 1;
         }
 
-        //Move right when the right arrow key is pressed.
+        //Move right when the right arrow key is pressed and animates it
         if (Input.GetKey(KeyCode.RightArrow))
         {
             gameObject.transform.Translate(new Vector2(PlayerStats.playerSpeed, 0) * 6 * Time.deltaTime);
@@ -170,7 +186,7 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.flipX = false;
         }
 
-        //Move left when the left arrow key is pressed.
+        //Move left when the left arrow key is pressed and animates it
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
             gameObject.transform.Translate(new Vector2((PlayerStats.playerSpeed * -1), 0) * 6 * Time.deltaTime);

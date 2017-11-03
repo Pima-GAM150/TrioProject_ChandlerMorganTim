@@ -9,17 +9,25 @@ public class PushBlock : MonoBehaviour
     public Rigidbody2D PushableBlock = new Rigidbody2D();
     float verticalVelocity;
 
+    public bool pushable;
+
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "player")
+        if (collision.gameObject.tag == "Player")
         {
-            print("The player is trying to push a block!");
             pushForce = true;
         }
         else
         {
             pushForce = false;
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            pushForce = false;
         }
     }
 
@@ -35,16 +43,19 @@ public class PushBlock : MonoBehaviour
 
         verticalVelocity = PushableBlock.velocity.y;
 
-        if (pushForce = true && PlayerStats.playerStrength == 2)
+        if (pushForce == true && PlayerStats.playerStrength == 2)
         {
+            pushable = true;
             PushableBlock.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
-        else if(verticalVelocity == 0)
+        else if(verticalVelocity < 1 && verticalVelocity > -1)
         {
+            pushable = false;
             PushableBlock.constraints = RigidbodyConstraints2D.FreezeAll;
         }
         else
         {
+            pushable = false;
             PushableBlock.constraints = RigidbodyConstraints2D.FreezePositionX;
             PushableBlock.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
