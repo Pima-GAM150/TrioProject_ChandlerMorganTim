@@ -11,7 +11,7 @@ public class FallingThing : MonoBehaviour
         if (player.gameObject.tag == "Player")
         {
             //Debug.Log("ding");
-            fallingThing.gravityScale = 1;
+            fallingThing.gravityScale = .1f;
 
 
         }
