@@ -22,6 +22,10 @@ public class PushBlock : MonoBehaviour
             pushForce = false;
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
+        if (collision.gameObject.tag == "Restart")
+        {
+            Destroy(this.gameObject);
+        }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -61,4 +65,5 @@ public class PushBlock : MonoBehaviour
         }
 
     }
+
 }

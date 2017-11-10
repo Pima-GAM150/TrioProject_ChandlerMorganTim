@@ -75,8 +75,9 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        PlayerClean();
-        hasChangedForms = false;
+        playerModeSelect = 1;
+        PlayerSpeedMode();
+        hasChangedForms = true;
     }
 
     // Update is called once per frame
@@ -272,6 +273,10 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene(0);
         }
         if (collision.gameObject.tag == "Run")
+        {
+            SceneManager.LoadScene(0);
+        }
+        if (collision.gameObject.tag == "Finish")
         {
             SceneManager.LoadScene(0);
         }
